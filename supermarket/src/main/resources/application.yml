@@ -1,0 +1,46 @@
+server:
+  port: 9000
+
+spring:
+  profiles:
+    active: dev
+  datasource:
+    username: root
+    password: root
+    url: jdbc:mysql://www.vvlhw.com:3308/supermarket?useSSL=true&useUnicode=true&&characterEncoding=utf-8&serverTimezone=GMT%2B8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+  redis:
+    host: www.kingwait.com
+    port: 6379
+
+  cloud:
+    alicloud:
+      secret-key: rf9NTpe1sJZY1NcUP1A98BvuD0S0jH
+      access-key: LTAI4GKXXraPSUcVAiNmt5jn
+      oss:
+        endpoint: oss-cn-shenzhen.aliyuncs.com
+        bucket: pptmall-vvlhw
+
+
+
+
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+      id-type: auto
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: true
+  mapper-locations: classpath:/mapper/*.xml
+
+
+
+logging:
+  file:
+    path: /market/log
+  level:
+    io.swagger.models.parameters.AbstractSerializableParameter: error

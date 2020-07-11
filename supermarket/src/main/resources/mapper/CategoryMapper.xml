@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vvlhw.supermarket.dao.CategoryMapper">
+
+    <resultMap id="cateVO" type="com.vvlhw.supermarket.vo.CategoryVO">
+        <id column="cat_id" property="catId"></id>
+        <result column="cat_name" property="catName"></result>
+        <result column="cat_goodCount" property="catGoodCount"></result>
+        <collection property="goods" ofType="com.vvlhw.supermarket.entity.Good">
+            <id column="good_id" property="goodId"></id>
+            <result column="good_name" property="goodName"></result>
+            <result column="good_description" property="goodDescription"></result>
+            <result column="good_owner" property="goodOwner"></result>
+            <result column="cat_id" property="catId"></result>
+            <result column="good_price" property="goodPrice"></result>
+            <result column="good_sale" property="goodSale"></result>
+            <result column="good_mainImageUrl" property="goodMainimageUrl"></result>
+        </collection>
+    </resultMap>
+
+    <select id="findGoodPageByCatId" resultMap="cateVO">
+        SELECT * FROM `category` c, `good` g WHERE c.cat_id=g.cat_id AND c.cat_id = #{id};
+    </select>
+
+
+<!--    <select id="findGoodPageByCatId" resultType="com.vvlhw.supermarket.vo.CategoryVO">-->
+<!--        SELECT * FROM `category` c, `good` g WHERE c.cat_id=g.cat_id AND c.cat_id = #{id};-->
+<!--    </select>-->
+
+</mapper>
